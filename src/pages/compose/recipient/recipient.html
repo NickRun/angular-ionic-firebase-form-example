@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Recipient
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p><strong>Who's this going to?</strong></p>
+  <form [formGroup]="recipientForm" (ngSubmit)="nextStep()">
+    <ion-item [ngClass]="{ 'error' : !validateName() }">
+      <ion-label color="primary" floating>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!validateName()" class="error" no-lines>
+      <small>Valid name required</small>
+    </ion-item>
+    <ion-item [ngClass]="{ 'error' : !validateEmail() }">
+      <ion-label color="primary" floating>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!validateEmail()" class="error" no-lines>
+      <small>Valid email required</small>
+    </ion-item>
+    <button ion-button type="submit" block class="next-step-btn" [disabled]="!this.recipientForm.valid">
+      <span *ngIf="!reviewEdit">Next Step</span>
+      <span *ngIf="reviewEdit">Edit &amp; Review</span>
+    </button>
+  </form>
+</ion-content>

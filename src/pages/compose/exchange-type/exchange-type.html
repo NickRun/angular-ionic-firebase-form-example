@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Exchange Type
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form (ngSubmit)="nextStep()">
+    <div radio-group [(ngModel)]="request.exchangeType" name="exchangeType">
+      <ion-item>
+        <ion-label color="primary">Dropoff &amp; Pickup</ion-label>
+        <ion-radio value="both"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Just Dropoff</ion-label>
+        <ion-radio value="dropoff"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Just Pickup</ion-label>
+        <ion-radio value="pickup"></ion-radio>
+      </ion-item>
+    </div>
+    <button ion-button type="submit" block class="next-step-btn">Next Step</button>
+  </form>
+
+</ion-content>

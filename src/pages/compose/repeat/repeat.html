@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Occurance
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p><strong>Is this a repeating plan?</strong></p>
+
+  <form [formGroup]="repeatForm" (ngSubmit)="nextStep()">
+    <div radio-group formControlName="repeat">
+      <ion-item>
+        <ion-label color="primary">No</ion-label>
+        <ion-radio value="no"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Yes</ion-label>
+        <ion-radio value="yes"></ion-radio>
+      </ion-item>
+    </div>
+     <ion-item>
+        <ion-label color="primary">Repeat Every</ion-label>
+        <ion-select [disabled]="isRepeating() ? null : ''" formControlName="occurance">
+          <ion-option value="1 week">1 Week</ion-option>
+          <ion-option value="2 weeks">2 Weeks</ion-option>
+          <ion-option value="3 weeks">3 Weeks</ion-option>
+          <ion-option value="4 weeks">4 Weeks</ion-option>
+        </ion-select>
+      </ion-item>
+    <button 
+      ion-button
+      type="submit"
+      block
+      class="next-step-btn" 
+      [disabled]="!this.repeatForm.valid && isRepeating()">Next Step</button>
+  </form>
+
+</ion-content>

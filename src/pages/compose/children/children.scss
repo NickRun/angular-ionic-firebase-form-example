@@ -1,0 +1,20 @@
+.rm-name-icon {
+  margin-top:12px;
+  font-size:24px;
+  color: color($colors, danger);
+}
+
+.rm-name-icon--disabled {
+    margin-top:12px;
+    font-size:24px;
+    color: lighten(color($colors, danger), 30%);
+}
+
+.add-more-children {
+  padding-top:20px;
+  text-align:right;
+  //
+  a {
+    font-size:17px;
+  }
+}

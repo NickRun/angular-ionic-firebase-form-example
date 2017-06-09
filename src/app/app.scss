@@ -1,0 +1,14 @@
+.next-step-btn {
+  margin-top:40px;
+}
+
+.error {
+  //
+  .label, small {
+    color: color($colors, danger)!important;
+  }
+  //
+  small {
+    display:block;
+  }
+}

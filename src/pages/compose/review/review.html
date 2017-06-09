@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Review Request
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>Recipient</ion-card-header>
+    <ion-card-content>
+      <div>{{ request.receiverName }}</div>
+      <div>{{ request.receiverEmail }}</div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>Children</ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let child of request.children;">
+        {{child}}
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="request.pickup.date">
+    <ion-card-header>Pickup Details</ion-card-header>
+    <ion-card-content>
+      <div>{{request.pickup.date}}</div>
+      <div>{{request.pickup.time}}</div>
+      <div>{{request.pickup.location}}</div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="request.dropoff.date">
+    <ion-card-header>Dropoff Details</ion-card-header>
+    <ion-card-content>
+      <div>{{request.dropoff.date}}</div>
+      <div>{{request.dropoff.time}}</div>
+      <div>{{request.dropoff.location}}</div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>Occurance</ion-card-header>
+    <ion-card-content>
+      <div *ngIf="request.occurance">Every {{request.occurance}}</div>
+      <div *ngIf="!request.occurance">Just Once</div>
+    </ion-card-content>
+  </ion-card>
+
+  <button ion-button (click)="submitRequest()" type="submit" block class="next-step-btn">Send Request</button>
+</ion-content>

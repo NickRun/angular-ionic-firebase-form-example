@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Requests</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let request of requests | async" (click)="openRequest(request.$key)">
+    <ion-card-content>
+      <div>
+        <ion-badge class="request-status">{{ request.status }}</ion-badge>
+        {{ request.receiverName }}
+      </div>
+      <div>{{ request.sentDate | date }}</div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

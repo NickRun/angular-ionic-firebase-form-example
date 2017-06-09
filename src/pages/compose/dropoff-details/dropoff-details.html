@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Dropoff Details
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="dropoffForm" (ngSubmit)="nextStep()">
+    <ion-item>
+      <ion-label color="primary" floating>Date</ion-label>
+      <ion-datetime displayFormat="MMMM/DD/YYYY" formControlName="date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Time</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="time"></ion-datetime>
+    </ion-item>
+    <ion-item [ngClass]="{ 'error' : !validateLocation() }">
+      <ion-label color="primary" floating>Location</ion-label>
+      <ion-input type="text" formControlName="location"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!validateLocation()" class="error" no-lines>
+      <small>Valid location required</small>
+    </ion-item>
+    <button ion-button type="submit" block class="next-step-btn" [disabled]="!this.dropoffForm.valid">Next Step</button>
+  </form>
+
+</ion-content>

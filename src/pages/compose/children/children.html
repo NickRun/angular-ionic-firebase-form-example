@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Children
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p><strong>Who are you exchanging?</strong></p>
+  <form [formGroup]="childrenForm" (ngSubmit)="nextStep()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 formArrayName="children">
+            <ion-row *ngFor="let child of childrenForm.controls.children.controls; let i = index; trackBy: customTrackBy" class="child-name">
+              <ion-col col-1>
+                <ion-icon *ngIf="i === 0" name="remove-circle" class="rm-name-icon--disabled" color="primary"></ion-icon>
+                <ion-icon *ngIf="i != 0" name="remove-circle" class="rm-name-icon" (click)="removeName(i)" color="primary"></ion-icon>
+              </ion-col>
+              <ion-col col-11>
+                <ion-item class="child-item" [formGroupName]="i" [ngClass]="{ 'error' : !validateName(i) }">
+                  <ion-input formControlName="name" type="text" placeholder="Name"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!validateName(i)" class="error" no-lines>
+                  <small>Valid name is required</small>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="add-more-children">
+              <a (click)="addMore()">Add More  <ion-icon name="add-circle"></ion-icon></a>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <button ion-button type="submit" block class="next-step-btn" [disabled]="!this.childrenForm.valid">Next Step</button>
+  </form>
+</ion-content>
